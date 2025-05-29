@@ -1,43 +1,32 @@
 package com.difrancescogianmarco.arcore_flutter_plugin
 
-import android.app.Activity
-import android.content.Context
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 class ArcoreFlutterPlugin : FlutterPlugin, ActivityAware {
 
-    companion object {
-        lateinit var context: Context
-        lateinit var activity: Activity
-        lateinit var channel: MethodChannel
-
-        // Optional if you want to keep support for V1 registrars (not needed unless you're supporting old versions)
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            context = registrar.context()
-            activity = registrar.activity()
-        }
-    }
-
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        context = binding.applicationContext
+        // Initialize plugin resources here
     }
 
-    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {}
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        // Clean up plugin resources here
+    }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        activity = binding.activity
+        // Handle activity attachment
     }
 
-    override fun onDetachedFromActivityForConfigChanges() {}
+    override fun onDetachedFromActivityForConfigChanges() {
+        // Handle activity detachment for config changes
+    }
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-        activity = binding.activity
+        // Handle reattachment to activity after config changes
     }
 
-    override fun onDetachedFromActivity() {}
+    override fun onDetachedFromActivity() {
+        // Handle activity detachment
+    }
 }
